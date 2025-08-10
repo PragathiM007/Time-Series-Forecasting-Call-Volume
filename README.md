@@ -1,96 +1,100 @@
 # 📞 Time Series Forecasting – Call Volume
 
-## 🧭 Project Overview
-This project aims to forecast daily call volumes in a call center using time series analysis techniques. Accurate forecasting helps businesses better manage staffing, reduce customer wait times, and optimize operational costs.
-
-The dataset includes historical call data, and the analysis applies classical and machine learning-based time series models to predict future call volumes.
+## 📌 Project Overview
+This project forecasts daily call volumes for a call center using historical call data, reservation trends, and seasonal indicators.  
+The goal is to build reliable time series models to understand call volume fluctuations and measure the impact of reservations and special days on demand.
 
 ---
 
-## 📂 Dataset Description
-- **Source**: Internal call center logs or simulated daily call volume dataset
-- **Features**:
-  - `Date`: Timestamp of call activity (daily granularity)
-  - `Call_Volume`: Number of calls received per day
-- **Size**: 2+ years of daily call volume data
+## 📊 Dataset
+
+**Sources:**
+- `case_data_calls.csv` – Daily call volume data
+- `case_data_reservations.csv` – Reservation data with potential impact on call volumes
+
+**Time Period:**
+- January 1, 2013 – February 29, 2016 (3+ years of daily data)
+
+**Key Features:**
+- Date (day-month-year)
+- Calls received daily
+- Reservation counts (total and 2 months in advance)
+- Binary indicators for summer break, Christmas break, and special holidays
+- Weekday encoded as integer and name
 
 ---
 
 ## 🎯 Objectives
-- Perform exploratory time series analysis (trend, seasonality, outliers)
-- Apply and compare multiple forecasting models
-- Evaluate model performance using appropriate error metrics
-- Visualize predicted vs. actual call volumes
+- Clean and preprocess time series and related features
+- Explore relationships between call volumes, reservations, and seasonal patterns
+- Forecast daily call volumes
+- Evaluate performance using RMSE and cross-validation
+- Analyze holiday and special day impacts on call demand
 
 ---
 
-## 🛠️ Tools & Libraries
-- Python (Pandas, NumPy, Matplotlib, Seaborn)
-- Statsmodels (ARIMA, SARIMA)
-- Facebook Prophet
-- Scikit-learn
-- XGBoost Regressor (for ML-based time series forecasting)
-- Visualization: Plotly, Matplotlib
+## 🧠 Models & Techniques
+- Linear Regression
+- Random Forest Regression
+- Time-aware train-test splitting
+- Cross-validation for stability checks
+- Hypothesis testing to measure operational impacts
 
 ---
 
-## 📈 Models Applied
-| Model             | Description                                     |
-|------------------|-------------------------------------------------|
-| ARIMA            | Baseline model for trend analysis               |
-| SARIMA           | Adds seasonality handling                       |
-| Facebook Prophet | Handles trend + seasonality + holiday effects   |
-| XGBoost          | Used with lag features to create supervised model |
+## 📈 Performance Metrics
+- **RMSE** – model accuracy
+- **Cross-validated RMSE** – generalization
+- **T-test** – significance of abandonment rate differences
 
 ---
 
-## 📊 Evaluation Metrics
-- Mean Absolute Error (MAE)
-- Root Mean Squared Error (RMSE)
-- Mean Absolute Percentage Error (MAPE)
-- Visual inspection of predicted vs actual plots
+## 🔍 Key Findings
+- Linear regression slightly outperformed random forest
+- Performance varied across folds — seasonal or behavioral shifts likely
+- Significant abandonment rate differences linked to call volume
+- Reservations and holidays strongly influence call demand
 
 ---
 
-## 📉 Key Insights
-- Strong weekly seasonality pattern with higher volumes on weekdays
-- SARIMA and Prophet performed well on test data with low RMSE
-- Holidays and special events had a measurable effect on call spikes
-- XGBoost with lag/rolling features offered competitive results but required careful feature engineering
+## 📊 Visualizations
+- Time series plots (calls vs. reservations)
+- Correlation heatmaps
+- Train-test split visualizations
+- Prediction vs. actual call volume plots
 
 ---
 
-## 📁 Folder Structure
-call-volume-forecasting/
+## 📂 Folder Structure
+call-volume-forecast/
 ├── data/
-│ └── call_volume.csv
+│ ├── case_data_calls.csv
+│ ├── case_data_reservations.csv
 ├── notebooks/
-│ ├── eda_forecasting.ipynb
-│ ├── arima_model.ipynb
-│ ├── prophet_model.ipynb
-│ └── xgboost_forecasting.ipynb
+│ ├── call_volume_forecast_analysis.ipynb
+├── models/
+│ ├── saved_models.pkl
 ├── outputs/
-│ ├── forecast_plots/
-│ └── evaluation_metrics.csv
+│ ├── visuals/
+│ ├── metrics/
 ├── README.md
 
-
 ---
 
-## 🔮 Future Work
-- Add external features (e.g., weather, marketing campaigns, system outages)
-- Deploy model as an API for real-time forecasting
-- Build an interactive dashboard using Streamlit or Power BI
-
----
-
-## ⚖️ Ethical Considerations
-- Ensure forecasts are not used to justify labor reductions without context
-- Periodic retraining required to adjust to recent behavioral changes (e.g., post-pandemic call trends)
+## 🔮 Future Enhancements
+- Use **SARIMA** or **LSTM** for better time series modeling
+- Add peak hours, rolling averages, and lag features
+- Build automated forecasting pipeline
+- Deploy results in real-time dashboards
 
 ---
 
 ## 👤 Author
 **Pragathi Porawakara Arachchige**  
-[GitHub Profile](https://github.com/PragathiM007)  
-Bellevue University – Applied Data Science
+📎 [GitHub Profile](https://github.com/PragathiM007)  
+Bellevue University – DSC680 Applied Data Science
+
+---
+
+## 📜 License
+This project is licensed under the **PAPM License**.
